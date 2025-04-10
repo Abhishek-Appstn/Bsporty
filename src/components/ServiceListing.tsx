@@ -5,7 +5,7 @@ import ItemListingLayout from './ItemListingLayout'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 
 type Props = {
-    header: string
+    header: string, data: object
 }
 
 type RenderItemProps = {
@@ -19,12 +19,12 @@ const ServiceListingRenderItem: React.FC<RenderItemProps> = ({ item, index }) =>
     )
 }
 
-const ServiceListing: React.FC<Props> = ({ header }) => {
+const ServiceListing: React.FC<Props> = ({ header, data }) => {
     return (
         <View style={{ marginTop: SCREEN_HEIGHT * .02, }} >
             <Text style={{ fontSize: 16, fontWeight: '500' }}>{header}</Text>
 
-            <FlatList scrollEnabled={false} contentContainerStyle={{ marginTop: SCREEN_HEIGHT * .005 }} numColumns={4} data={ServiceList} renderItem={(item) => <ServiceListingRenderItem item={item.item} index={item.index} />} />
+            <FlatList scrollEnabled={false} contentContainerStyle={{ marginTop: SCREEN_HEIGHT * .005 }} numColumns={4} data={data} renderItem={(item) => <ServiceListingRenderItem item={item.item} index={item.index} />} />
         </View >
     )
 }

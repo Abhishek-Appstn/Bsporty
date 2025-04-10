@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, SafeAreaView, StatusBar, Text, View } from 'react-native'
 import { colors } from '../constants/colors'
-import { SCREENDIMENSIONS } from '../constants/constants'
+import { BrandsList, SCREENDIMENSIONS, ServiceList } from '../constants/constants'
 import { App_logo, search_normal, Stadium, wallet } from '../assets/images'
 import { IconLayout, ServiceListing, TopUpdates } from '../components'
 import ImageCarousal from '../components/ImageCarousal'
@@ -30,7 +30,9 @@ const LandingPage: React.FC<Props> = (props) => {
                 <Header />
                 <TopUpdates HeaderText={"Top Updates"} OfferData={'Get 50% off on indoor activites'} />
                 <ImageCarousal images={[Stadium, Stadium, Stadium, Stadium,]} />
-                <ServiceListing header='Services' />
+                <ServiceListing header='Services' data={ServiceList} />
+                <ServiceListing header='Discover Our Brand' data={BrandsList} />
+
             </View>
         </SafeAreaView>
     )
