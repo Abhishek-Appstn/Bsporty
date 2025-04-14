@@ -1,5 +1,5 @@
 import { Dimensions } from "react-native";
-import { Academy, AmericanAcademySchool, AspireAcademy, Classes, Decathlon, DynamicSports, GoSport, HealthyFood, lululemon, Membership, PersonalCoaches, QatarHandballAssociation, Shops, Sports, SportsCorner, Tournaments } from "../assets/images";
+import { Academy, AmericanAcademySchool, AspireAcademy, Badminton, Classes, Decathlon, DynamicSports, Football, Golf, GoSport, HealthyFood, lululemon, Membership, Padel, PersonalCoaches, QatarHandballAssociation, Shops, Sports, SportsCorner, Swimming, Taekwondo, Tennis, Tournaments, Volleyball } from "../assets/images";
 const { height, width } = Dimensions.get('screen')
 
 export const SCREENDIMENSIONS = {
@@ -11,3 +11,11 @@ export const ServiceList = [{ image: Academy, title: 'Academy' }, { image: Tourn
 
 export const BrandsList = [{ image: DynamicSports }, { image: SportsCorner }, { image: Decathlon }, { image: lululemon }, { image: AspireAcademy }, { image: AmericanAcademySchool }, { image: QatarHandballAssociation }, { image: GoSport }
 ]
+
+export const SportList = [{ image: Padel, title: 'Padel' }, { image: Volleyball, title: 'Volleyball' }, { image: Football, title: 'Football' }, { image: Swimming, title: 'Swimming' }, { image: Tennis, title: 'Tennis' }, { image: Badminton, title: 'Badminton' }, { image: Golf, title: 'Golf' }, { image: Taekwondo, title: 'Taekwondo' },
+
+]
+
+export const EventData = [{ title: 'Activity' }, { title: 'Match' }, { title: 'Tournament' },]
+
+

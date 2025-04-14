@@ -4,11 +4,11 @@ import { SCREENDIMENSIONS } from '../constants/constants'
 import { colors } from '../constants/colors'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 type Props = {
-    IconImage: ImageSourcePropType
+    IconImage: ImageSourcePropType, onPress?: () => void
 }
-const IconLayout: React.FC<Props> = ({ IconImage }) => {
+const IconLayout: React.FC<Props> = ({ IconImage, onPress }) => {
     return (
-        <Pressable style={{ borderRadius: SCREEN_HEIGHT, height: SCREEN_HEIGHT * .04, width: SCREEN_HEIGHT * .04, borderColor: '#04050326', alignItems: 'center', justifyContent: 'center', borderWidth: 1 }}>
+        <Pressable style={{ borderRadius: SCREEN_HEIGHT, height: SCREEN_HEIGHT * .04, width: SCREEN_HEIGHT * .04, borderColor: '#04050326', alignItems: 'center', justifyContent: 'center', borderWidth: 1 }} onPress={onPress}>
             <Image source={IconImage} resizeMode='contain' />
 
         </Pressable>

@@ -19,12 +19,20 @@ import AspireAcademy from './AspireAcademy/AspireAcademy.png'
 import AmericanAcademySchool from './AmericanAcademySchool/AmericanAcademySchool.png'
 import QatarHandballAssociation from './QatarHandballAssociation/QatarHandballAssociation.png'
 import GoSport from './GoSport/GoSport.png'
-
-
-
+import ArrowRight from './ArrowRight/ArrowRight.png'
+import Taekwondo from './Taekwondo/Taekwondo.png'
+import Golf from './Golf/Golf.png'
+import Badminton from './Badminton/Badminton.png'
+import Tennis from './Tennis/Tennis.png'
+import Football from './Football/Football.png'
+import Padel from './Padel/Padel.png'
+import Swimming from './Swimming/Swimming.png'
+import Volleyball from './Volleyball/Volleyball.png'
+import Filter from './Filter/Filter.png'
+import FooterImage from './FooterImage/FooterImage.png'
 
 
 export {
     App_logo, wallet, search_normal, DiscountIcon, Stadium, Sports, Membership, Classes, Shops, HealthyFood, PersonalCoaches, Tournaments, Academy,
-    DynamicSports, SportsCorner, Decathlon, lululemon, AspireAcademy, AmericanAcademySchool, QatarHandballAssociation, GoSport
+    DynamicSports, SportsCorner, Decathlon, lululemon, AspireAcademy, AmericanAcademySchool, QatarHandballAssociation, GoSport, ArrowRight, Taekwondo, Golf, Badminton, Tennis, Football, Padel, Swimming, Volleyball, Filter, FooterImage
 }

@@ -22,5 +22,3 @@ const ItemListingLayout: React.FC<Props> = ({ Title, image }) => {
 }
 
 export default ItemListingLayout
-
-const styles = StyleSheet.create({})
