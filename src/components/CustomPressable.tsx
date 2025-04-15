@@ -5,12 +5,12 @@ import { colors } from '../constants/colors'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 
 type Props = {
-    title: string
+    title: string, onPress?: () => void
 }
 
-const CustomPressable: React.FC<Props> = ({ title }) => {
+const CustomPressable: React.FC<Props> = ({ title, onPress }) => {
     return (
-        <Pressable style={{ width: SCREEN_WIDTH * .9, backgroundColor: colors.Primary_Green, height: SCREEN_HEIGHT * .05, alignSelf: 'center', alignItems: 'center', justifyContent: 'center', borderRadius: SCREEN_WIDTH * .02 }}>
+        <Pressable style={{ width: SCREEN_WIDTH * .9, backgroundColor: colors.Primary_Green, height: SCREEN_HEIGHT * .05, alignItems: 'center', justifyContent: 'center', borderRadius: SCREEN_WIDTH * .02 }} onPress={onPress}>
             <Text style={{ color: colors.Text_White, fontWeight: '500', fontSize: 16 }}>{title}</Text>
         </Pressable>
     )

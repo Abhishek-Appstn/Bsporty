@@ -6,5 +6,9 @@ export const colors = {
     Surface_light: '#FAFAFA',
     Text_White: '#FFFFFF',
     UpdateText: '#132C3F',
-    CarousalGray: '#D9D9D9'
+    CarousalGray: '#D9D9D9',
+    border: '#04050326',
+    button: '#040503'
+
+
 }

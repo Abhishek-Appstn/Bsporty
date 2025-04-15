@@ -11,6 +11,7 @@ import TodaysActivities from '../components/TodaysActivities'
 import moment from 'moment'
 import ActionSheet from 'react-native-actions-sheet'
 import Search from '../components/Search'
+import Selectable from '../components/Selectable'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 type Props = {
 }
@@ -21,7 +22,7 @@ type HeaderProps = {
 
 const Header: React.FC<HeaderProps> = ({ SearchRef }) => {
     return (
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: StatusBar.currentHeight }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: StatusBar.currentHeight, paddingBottom: SCREEN_HEIGHT * .01 }}>
             <Image source={App_logo} />
             <View style={{ width: SCREEN_WIDTH * .2, flexDirection: 'row', justifyContent: 'space-between' }}>
                 <IconLayout IconImage={wallet} />
@@ -46,11 +47,11 @@ const LandingPage: React.FC<Props> = (props) => {
     const SearchRef = useRef()
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: colors.Surface_light, }}>
-            <View style={{ paddingHorizontal: SCREEN_WIDTH * .05, flex: 1 }}>
+            <View style={{ paddingHorizontal: SCREEN_WIDTH * .05, flex: 1, }}>
 
                 <Header SearchRef={SearchRef} />
 
-                <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
+                <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
                     <TopUpdates HeaderText={"Top Updates"} OfferData={'Get 50% off on indoor activites'} />
                     <ImageCarousal images={[Stadium, Stadium, Stadium, Stadium,]} />
                     <ServiceListing header='Services' data={ServiceList} />

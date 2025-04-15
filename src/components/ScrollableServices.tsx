@@ -10,8 +10,6 @@ type Props = {}
 const ScrollableServices = (props: Props) => {
     const [Data, setData] = useState(BrandsList)
     return (
-
-
         <ServiceListing data={Data} header='Discover Our Brand' rightIcon={<CarousalSelector setActive={null} currentIndex={0} backgroundColor={'transparent'} totalCount={3} />} />
 
 

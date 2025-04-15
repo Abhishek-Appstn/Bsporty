@@ -49,22 +49,25 @@ const ItemDisplayCard: React.FC<Props> = ({ }) => {
             shadowColor: colors.Text,
             shadowRadius: 4,
             shadowOpacity: 0.3,
-            shadowOffset: { width: 0, height: 2 }, // Adjust for better visibility
-            backgroundColor: 'transparent', // Avoid unwanted background effects,
+            shadowOffset: { width: 0, height: 2 },
+            backgroundColor: 'transparent',
             elevation: 20
         }}>
-            {/* Inner container with content, ensuring it doesn't inherit shadow */}
+            <View style={{ width: SCREEN_WIDTH * .15, borderWidth: 0.92, borderRightWidth: 2.92, borderBottomWidth: 2.92, borderColor: colors.Text, position: 'absolute', height: SCREEN_HEIGHT * .02, elevation: 10, zIndex: 1, top: 10, backgroundColor: colors.Text_White, borderTopRightRadius: 10, borderBottomRightRadius: 10, justifyContent: 'center' }}>
+                <Text style={{ fontSize: 9, fontWeight: '500', textTransform: 'uppercase', marginLeft: SCREEN_WIDTH * .01, justifyContent: 'center' }}>Outdoor</Text>
+            </View>
             <Pressable style={{
                 height: SCREEN_HEIGHT * .2,
                 width: SCREEN_WIDTH * .43,
                 borderRadius: SCREEN_WIDTH * .02,
-                backgroundColor: 'white', // Explicit background color for proper shadow rendering
+                backgroundColor: 'white',
                 overflow: 'hidden',
             }}>
                 <ImageHeader image={Stadium} />
                 <Details Header={"Hellow"} eventType={'ead'} Organiser={"dscsdc"} time={""} />
+
             </Pressable>
-        </View>
+        </View >
     )
 }
 
