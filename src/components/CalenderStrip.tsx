@@ -36,9 +36,8 @@ const CalenderStrip: React.FC<Props> = ({ selectedDate, setSelectedDate }) => {
     const CalenderRef = useRef<FlatList<moment.Moment>>(null);
 
     useEffect(() => {
-        let StartofMonth = Month.clone().startOf('month');
         let EndofMonth = Month.clone().endOf('month');
-        let Date = StartofMonth.clone();
+        let Date = Month.clone();
         let TempDates: moment.Moment[] = [];
 
         while (Date.isSameOrBefore(EndofMonth)) {
@@ -53,7 +52,7 @@ const CalenderStrip: React.FC<Props> = ({ selectedDate, setSelectedDate }) => {
             if (Dates.length > 0 && CalenderRef.current) {
                 const indexToScroll = Dates.findIndex(d => d.isSame(selectedDate, 'day'));
                 if (indexToScroll !== -1) {
-                    CalenderRef.current.scrollToIndex({ index: Math.max(indexToScroll - 2.25, 0), animated: true });
+                    CalenderRef.current.scrollToIndex({ index: Math.max(indexToScroll, 0), animated: true });
                 }
             }
         }, 1000);
