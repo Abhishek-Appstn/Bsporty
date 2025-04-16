@@ -1,5 +1,5 @@
 import { Dimensions } from "react-native";
-import { Academy, AmericanAcademySchool, AspireAcademy, Badminton, cartImage, cartImageFilled, chatIcon, chatIconFilled, Classes, Decathlon, DynamicSports, Football, Golf, GoSport, HealthyFood, homeIcon, homeIconOutlined, lululemon, Membership, notifyIcon, notifyIconFilled, Padel, PersonalCoaches, QatarHandballAssociation, Shops, Sports, SportsCorner, Swimming, Taekwondo, Tennis, Tournaments, Volleyball } from "../assets/images";
+import { Academy, AmericanAcademySchool, AspireAcademy, Badminton, cartImage, cartImageFilled, chatIcon, chatIconFilled, Classes, Decathlon, dummyTennis, dummyVolleyball, DynamicSports, Football, Golf, GoSport, HealthyFood, homeIcon, homeIconOutlined, lululemon, Membership, notifyIcon, notifyIconFilled, Padel, PersonalCoaches, QatarHandballAssociation, Shops, Sports, SportsCorner, Swimming, Taekwondo, Tennis, Tournaments, Volleyball } from "../assets/images";
 const { height, width } = Dimensions.get('screen')
 
 export const SCREENDIMENSIONS = {
@@ -17,6 +17,15 @@ export const SportList = [{ image: Padel, title: 'Padel', type: 'Activity' }, { 
 ]
 
 export const EventData = [{ title: 'Activity' }, { title: 'Match' }, { title: 'Tournament' },]
+export const SearchData = [
+    { title: 'Paddle Mixed Game', eventType: 'tournament', image: dummyVolleyball, time: '10:00 AM', eventLocation: 'indoor', organiser: 'Al-Hassan Club' },
+    { title: 'Tennis', eventType: 'match', image: dummyTennis, time: '12:00 PM', eventLocation: 'indoor', organiser: 'Al-Harame Club' },
+    { title: 'Volley ball', eventType: 'activity', image: dummyVolleyball, time: '2:00 PM', eventLocation: 'outdoor', organiser: 'Al-Shukran Club' },
+    { title: 'Paddle Mixed Game', eventType: 'tournament', image: dummyVolleyball, time: '10:00 AM', eventLocation: 'indoor', organiser: 'Devils Club' },
+    { title: 'Tennis', eventType: 'match', image: dummyTennis, time: '12:00 PM', eventLocation: 'outdoor', organiser: 'Al-Federer Club' },
+    { title: 'Volley ball', eventType: 'activity', image: dummyVolleyball, time: '2:00 PM', eventLocation: 'outdoor', organiser: 'Al-Emerathi Club' },
+]
+
 
 export const BottomTabData = [
     {

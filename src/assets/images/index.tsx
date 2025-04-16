@@ -45,6 +45,10 @@ import cartImageFilled from './cartImage/cartImageFilled.png'
 import chatIconFilled from './chatIcon/chatIconFilled.png'
 
 import chatIcon from './chatIcon/chatIcon.png'
+import dummyTennis from './dummyTennis/dummyTennis.png'
+import dummyVolleyball from './dummyVolleyball/dummyVolleyball.png'
+import dummyFootball from './dummyFootball/dummyFootball.png'
+
 
 
 
@@ -54,5 +58,5 @@ import chatIcon from './chatIcon/chatIcon.png'
 
 export {
     App_logo, wallet, search_normal, DiscountIcon, Stadium, Sports, Membership, Classes, Shops, HealthyFood, PersonalCoaches, Tournaments, Academy,
-    DynamicSports, SportsCorner, Decathlon, lululemon, AspireAcademy, AmericanAcademySchool, QatarHandballAssociation, GoSport, ArrowRight, Taekwondo, Golf, Badminton, Tennis, Football, Padel, Swimming, Volleyball, Filter, FooterImage, roundBack, chevronDown, calendar, timer, cartImage, chatIcon, homeIcon, notifyIcon, notifyIconFilled, homeIconOutlined, cartImageFilled, chatIconFilled
+    DynamicSports, SportsCorner, Decathlon, lululemon, AspireAcademy, AmericanAcademySchool, QatarHandballAssociation, GoSport, ArrowRight, Taekwondo, Golf, Badminton, Tennis, Football, Padel, Swimming, Volleyball, Filter, FooterImage, roundBack, chevronDown, calendar, timer, cartImage, chatIcon, homeIcon, notifyIcon, notifyIconFilled, homeIconOutlined, cartImageFilled, chatIconFilled, dummyFootball, dummyTennis, dummyVolleyball
 }

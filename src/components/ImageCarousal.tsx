@@ -24,17 +24,36 @@ type Props = {
 const ImageCarousal: React.FC<Props> = ({ images }) => {
     const CarousalRef = useRef<FlatList>(null)
     const [Active, setActive] = useState(0)
+    const [ScrollActive, setScrollActive] = useState(false)
+
     useEffect(() => {
-        if (CarousalRef?.current)
-            CarousalRef?.current?.scrollToIndex({ index: Active, animated: true })
+        if (CarousalRef?.current && images.length > 0)
+            setTimeout(() => {
+                setScrollActive(true)
+                CarousalRef?.current?.scrollToIndex({ index: Active, animated: true })
+                setTimeout(() => {
+                    setScrollActive(false)
+
+                }, 400);
+
+            }, 100);
     }, [Active])
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActive(prev => (prev < images.length - 1 ? prev + 1 : 0));
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [Active]);
+
 
     return (
         <View style={{}}>
             <View style={{ position: 'absolute', top: SCREEN_HEIGHT * .03, zIndex: 1, left: SCREEN_WIDTH * .05 }}>
-                <CarousalSelector setActive={setActive} currentIndex={Active} totalCount={images.length} />
+                <CarousalSelector setScrollActive={setScrollActive} setActive={setActive} currentIndex={Active} totalCount={images.length} />
             </View>
-            <FlatList viewabilityConfig={{ viewAreaCoveragePercentThreshold: 30 }} initialScrollIndex={Active} ref={CarousalRef} scrollEventThrottle={16} onViewableItemsChanged={({ viewableItems }) => setActive(viewableItems[0]?.index)} bounces={false} showsHorizontalScrollIndicator={false} pagingEnabled={true} decelerationRate={'fast'} horizontal={true} data={images} renderItem={(item) => <CarousalRenderItem index={item.index} item={item.item} totalCount={images.length} />} />
+            <FlatList onScrollToIndexFailed={(err) => { console.log('Image carousal scroll to index failed', err) }} viewabilityConfig={{ viewAreaCoveragePercentThreshold: 30 }} initialScrollIndex={Active} ref={CarousalRef} scrollEventThrottle={16} onViewableItemsChanged={({ viewableItems }) => viewableItems.length > 0 && !ScrollActive ? setActive(viewableItems[0]?.index) : null} bounces={false} showsHorizontalScrollIndicator={false} pagingEnabled={true} decelerationRate={'fast'} horizontal={true} data={images} renderItem={(item) => <CarousalRenderItem index={item.index} item={item.item} totalCount={images.length} />} />
         </View>
 
     )

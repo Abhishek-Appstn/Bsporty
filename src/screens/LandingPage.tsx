@@ -12,21 +12,22 @@ import moment from 'moment'
 import ActionSheet from 'react-native-actions-sheet'
 import Search from '../components/Search'
 import Selectable from '../components/Selectable'
+import ModalOverlay from '../components/ModalOverlay'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 type Props = {
 }
 type HeaderProps = {
-    SearchRef: RefObject<Actionsheet>
+    setSearchVisible(bool: boolean): any
 
 }
 
-const Header: React.FC<HeaderProps> = ({ SearchRef }) => {
+const Header: React.FC<HeaderProps> = ({ setSearchVisible }) => {
     return (
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: StatusBar.currentHeight, paddingBottom: SCREEN_HEIGHT * .01 }}>
             <Image source={App_logo} />
             <View style={{ width: SCREEN_WIDTH * .2, flexDirection: 'row', justifyContent: 'space-between' }}>
                 <IconLayout IconImage={wallet} />
-                <IconLayout IconImage={search_normal} onPress={() => { SearchRef.current.show() }} />
+                <IconLayout IconImage={search_normal} onPress={() => { setSearchVisible(true) }} />
 
             </View>
         </View>
@@ -44,13 +45,13 @@ const Footer: React.FC<Props> = (props) => {
 
 const LandingPage: React.FC<Props> = (props) => {
     const [selectedDate, setselectedDate] = useState(moment())
-    const SearchRef = useRef()
+    const [SearchVisible, setSearchVisible] = useState(false)
+
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: colors.Surface_light, }}>
             <View style={{ paddingHorizontal: SCREEN_WIDTH * .05, flex: 1, }}>
-
-                <Header SearchRef={SearchRef} />
-
+                <Header setSearchVisible={setSearchVisible} />
                 <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
                     <TopUpdates HeaderText={"Top Updates"} OfferData={'Get 50% off on indoor activites'} />
                     <ImageCarousal images={[Stadium, Stadium, Stadium, Stadium,]} />
@@ -60,7 +61,7 @@ const LandingPage: React.FC<Props> = (props) => {
                     <CalenderStrip selectedDate={selectedDate} setSelectedDate={setselectedDate} />
                     <DisplayList />
                     <Footer />
-                    <Search SearchRef={SearchRef} />
+                    <Search setSearchVisible={setSearchVisible} SearchVisible={SearchVisible} />
                 </ScrollView>
             </View>
 

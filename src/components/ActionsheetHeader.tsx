@@ -6,7 +6,9 @@ import { colors } from '../constants/colors'
 import { SCREENDIMENSIONS } from '../constants/constants'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 
-type Props = {}
+type Props = {
+
+}
 
 const ActionsheetHeader = (props: Props) => {
     return (

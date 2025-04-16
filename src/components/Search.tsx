@@ -1,18 +1,14 @@
-import { FlatList, Image, Pressable, StyleSheet, Text, View } from 'react-native'
-import React, { ComponentLifecycle, RefObject, useState } from 'react'
-import ActionSheet from 'react-native-actions-sheet'
-import { EventData, SCREENDIMENSIONS, SportList } from '../constants/constants'
+import { StyleSheet, Text, View } from 'react-native'
+import React, { useState } from 'react'
+import { SCREENDIMENSIONS } from '../constants/constants'
 import { colors } from '../constants/colors'
-import ItemList, { GameSelector } from './ItemList'
-import ActivityIcon from './ActivityIcon'
+
 import CustomPressable from './CustomPressable'
-import { roundBack } from '../assets/images'
-import LinearGradient from 'react-native-linear-gradient'
+
 import Selectable from './Selectable'
 import EventScheduler from './EventScheduler'
 import moment from 'moment'
-import { Picker } from '@react-native-picker/picker'
-import ActionsheetHeader from './ActionsheetHeader'
+import ModalOverlay from './ModalOverlay'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 
 type SelectServicesProps = {
@@ -31,31 +27,30 @@ const SelectServices: React.FC<SelectServicesProps> = ({ selectedService, setsel
 
 
 type Props = {
-    SearchRef: RefObject<Actionsheet>
+    SearchVisible: any
+    setSearchVisible: any
 }
 
-const Search: React.FC<Props> = ({ SearchRef }) => {
+const Search: React.FC<Props> = ({ setSearchVisible, SearchVisible }) => {
     const [selectedService, setselectedService] = useState("football")
     const [selectedDate, setselectedDate] = useState(moment)
     const [selectedTime, setselectedTime] = useState(moment)
-
-
-
-
     return (
 
-        <ActionSheet ref={SearchRef} containerStyle={{ height: SCREEN_HEIGHT * .4, borderRadius: 0, }}>
+        <ModalOverlay height={SCREEN_HEIGHT * .4} modalVisible={SearchVisible} setModalVisible={setSearchVisible}>
+            <View style={{ justifyContent: 'space-between', flex: 1 }}>
 
-            <ActionsheetHeader />
-            <View style={{ paddingHorizontal: SCREEN_WIDTH * .03, }}>
-                <Text style={{ fontWeight: '600', fontSize: 16 }}>Search</Text>
-                <SelectServices selectedService={selectedService} setselectedService={setselectedService} />
-                <EventScheduler selectedDate={selectedDate} setSelectedDate={setselectedDate} selectedTime={selectedTime} setselectedTime={setselectedTime} />
+                <View style={{ paddingHorizontal: SCREEN_WIDTH * .03, }}>
+                    <Text style={{ fontWeight: '600', fontSize: 16 }}>Search</Text>
+                    <SelectServices selectedService={selectedService} setselectedService={setselectedService} />
+                    <EventScheduler selectedDate={selectedDate} setSelectedDate={setselectedDate} selectedTime={selectedTime} setselectedTime={setselectedTime} />
+                </View>
+
+                <CustomPressable title='Filter' onPress={() => setSearchVisible(false)} />
             </View>
-            <View style={{ alignItems: 'center', marginTop: SCREEN_HEIGHT * .05 }}>
-                <CustomPressable title='Filter' onPress={() => SearchRef?.current?.hide()} />
-            </View>
-        </ActionSheet >
+
+        </ModalOverlay>
+
 
     )
 }

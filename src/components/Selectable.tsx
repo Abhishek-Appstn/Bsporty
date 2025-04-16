@@ -3,7 +3,6 @@ import React from 'react'
 import { SCREENDIMENSIONS } from '../constants/constants'
 import { colors } from '../constants/colors'
 import { chevronDown } from '../assets/images'
-import { Picker } from '@react-native-picker/picker'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 type Props = {
     selectedService: string, setSelectedService: () => void

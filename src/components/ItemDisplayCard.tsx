@@ -5,7 +5,6 @@ import { colors } from '../constants/colors'
 import { ArrowRight, Stadium } from '../assets/images'
 import moment from 'moment'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
-type Props = {}
 type ImageProps = {
     image: ImageSourcePropType
 }
@@ -28,12 +27,12 @@ type Detailprops = {
 const Details: React.FC<Detailprops> = ({ Header, eventType, Organiser, time }) => {
     return (
         <View style={{ flex: 1, paddingLeft: SCREEN_WIDTH * .01, justifyContent: 'space-evenly' }}>
-            <Text style={{ color: colors.Primary_Green, fontSize: 9, fontWeight: '400' }}>{eventType}</Text>
-            <Text style={{ color: colors.Text, fontSize: 12, fontWeight: '500' }}>{Header}</Text>
-            <Text style={{ color: colors.Text, fontSize: 12, fontWeight: '500', opacity: 0.4 }}>{Organiser}</Text>
+            <Text style={{ color: colors.Primary_Green, fontSize: 9, fontWeight: '400', opacity: 0.6, textTransform: 'capitalize' }}>{eventType}</Text>
+            <Text style={{ color: colors.Text, fontSize: 12, fontWeight: '500', textTransform: 'capitalize' }}>{Header}</Text>
+            <Text style={{ color: colors.Text, fontSize: 12, fontWeight: '500', opacity: 0.4, textTransform: 'capitalize' }}>{Organiser}</Text>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                <View style={{ backgroundColor: colors.Grey_bg, height: SCREEN_HEIGHT * .02, width: SCREEN_WIDTH * .1, borderRadius: SCREEN_HEIGHT, alignItems: 'center', justifyContent: 'center' }} >
-                    <Text style={{ fontSize: 8.8 }} > 11:00</Text>
+                <View style={{ backgroundColor: colors.Grey_bg, height: SCREEN_HEIGHT * .02, minWidth: SCREEN_WIDTH * .1, borderRadius: SCREEN_HEIGHT, alignItems: 'center', justifyContent: 'center', paddingHorizontal: SCREEN_WIDTH * .007, paddingVertical: SCREEN_HEIGHT * .002 }} >
+                    <Text style={{ fontSize: 8.8 }} > {time}</Text>
                 </View>
                 <View style={{ paddingRight: SCREEN_WIDTH * .02 }}>
                     <Image source={ArrowRight} />
@@ -42,7 +41,14 @@ const Details: React.FC<Detailprops> = ({ Header, eventType, Organiser, time }) 
         </View >
     )
 }
-const ItemDisplayCard: React.FC<Props> = ({ }) => {
+type Props = {
+    displayImage: ImageSourcePropType,
+    eventType: String,
+    header: String,
+    time: string | moment.Moment, organiser: String, outdoor: boolean
+}
+
+const ItemDisplayCard: React.FC<Props> = ({ displayImage, time, header, eventType, organiser, outdoor }) => {
     return (
 
         <View style={{
@@ -53,9 +59,9 @@ const ItemDisplayCard: React.FC<Props> = ({ }) => {
             backgroundColor: 'transparent',
             elevation: 20
         }}>
-            <View style={{ width: SCREEN_WIDTH * .15, borderWidth: 0.92, borderRightWidth: 2.92, borderBottomWidth: 2.92, borderColor: colors.Text, position: 'absolute', height: SCREEN_HEIGHT * .02, elevation: 10, zIndex: 1, top: 10, backgroundColor: colors.Text_White, borderTopRightRadius: 10, borderBottomRightRadius: 10, justifyContent: 'center' }}>
+            {outdoor ? <View style={{ width: SCREEN_WIDTH * .15, borderWidth: 0.92, borderRightWidth: 2.92, borderBottomWidth: 2.92, borderColor: colors.Text, position: 'absolute', height: SCREEN_HEIGHT * .02, elevation: 10, zIndex: 1, top: 10, backgroundColor: colors.Text_White, borderTopRightRadius: 10, borderBottomRightRadius: 10, justifyContent: 'center' }}>
                 <Text style={{ fontSize: 9, fontWeight: '500', textTransform: 'uppercase', marginLeft: SCREEN_WIDTH * .01, justifyContent: 'center' }}>Outdoor</Text>
-            </View>
+            </View> : null}
             <Pressable style={{
                 height: SCREEN_HEIGHT * .2,
                 width: SCREEN_WIDTH * .43,
@@ -63,8 +69,8 @@ const ItemDisplayCard: React.FC<Props> = ({ }) => {
                 backgroundColor: 'white',
                 overflow: 'hidden',
             }}>
-                <ImageHeader image={Stadium} />
-                <Details Header={"Hellow"} eventType={'ead'} Organiser={"dscsdc"} time={""} />
+                <ImageHeader image={displayImage} />
+                <Details Header={header} eventType={eventType} Organiser={organiser} time={moment(time, "hh:mm A").format("hh:mm A")} />
 
             </Pressable>
         </View >
