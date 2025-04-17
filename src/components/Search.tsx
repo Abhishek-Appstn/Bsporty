@@ -9,6 +9,7 @@ import Selectable from './Selectable'
 import EventScheduler from './EventScheduler'
 import moment from 'moment'
 import ModalOverlay from './ModalOverlay'
+import { localizer } from '../utils'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 
 type SelectServicesProps = {
@@ -18,7 +19,7 @@ type SelectServicesProps = {
 const SelectServices: React.FC<SelectServicesProps> = ({ selectedService, setselectedService }) => {
     return (
         <View style={{ marginTop: SCREEN_HEIGHT * .02 }}>
-            <Text style={{ fontWeight: '500', fontSize: 12, color: colors.Text, marginVertical: SCREEN_HEIGHT * .01 }}>Select Services</Text>
+            <Text style={{ fontWeight: '500', fontSize: 12, color: colors.Text, marginVertical: SCREEN_HEIGHT * .01 }}>{localizer('Select_Services')} </Text>
             <Selectable selectedService={selectedService} setSelectedService={setselectedService} />
         </View>
     )
@@ -41,7 +42,7 @@ const Search: React.FC<Props> = ({ setSearchVisible, SearchVisible }) => {
             <View style={{ justifyContent: 'space-between', flex: 1 }}>
 
                 <View style={{ paddingHorizontal: SCREEN_WIDTH * .03, }}>
-                    <Text style={{ fontWeight: '600', fontSize: 16 }}>Search</Text>
+                    <Text style={{ fontWeight: '600', fontSize: 16 }}>{localizer('Search')}</Text>
                     <SelectServices selectedService={selectedService} setselectedService={setselectedService} />
                     <EventScheduler selectedDate={selectedDate} setSelectedDate={setselectedDate} selectedTime={selectedTime} setselectedTime={setselectedTime} />
                 </View>

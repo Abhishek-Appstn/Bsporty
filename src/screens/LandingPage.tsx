@@ -1,7 +1,7 @@
 import React, { Ref, RefObject, useRef, useState } from 'react'
 import { Image, ImageBackground, SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
 import { colors } from '../constants/colors'
-import { BrandsList, SCREENDIMENSIONS, ServiceList } from '../constants/constants'
+import { BrandsList, EventData, SCREENDIMENSIONS, ServiceList } from '../constants/constants'
 import { App_logo, FooterImage, search_normal, Stadium, wallet } from '../assets/images'
 import { CalenderStrip, DisplayList, IconLayout, ItemDisplayCard, ServiceListing, TopUpdates } from '../components'
 import ImageCarousal from '../components/ImageCarousal'
@@ -13,6 +13,9 @@ import ActionSheet from 'react-native-actions-sheet'
 import Search from '../components/Search'
 import Selectable from '../components/Selectable'
 import ModalOverlay from '../components/ModalOverlay'
+import { useDispatch, useSelector } from 'react-redux'
+import utils, { flexDirection, localizer } from '../utils'
+import { setLanguage } from '../Redux/Slices/languageSlice'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 type Props = {
 }
@@ -22,13 +25,15 @@ type HeaderProps = {
 }
 
 const Header: React.FC<HeaderProps> = ({ setSearchVisible }) => {
+    const language = useSelector(state => state?.language?.value)
+    const dispatch = useDispatch()
     return (
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: StatusBar.currentHeight, paddingBottom: SCREEN_HEIGHT * .01 }}>
+        <View style={[{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: StatusBar.currentHeight, paddingBottom: SCREEN_HEIGHT * .01 }, flexDirection()]}>
             <Image source={App_logo} />
-            <View style={{ width: SCREEN_WIDTH * .2, flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View style={[{ flexDirection: 'row' }, flexDirection()]}>
                 <IconLayout IconImage={wallet} />
                 <IconLayout IconImage={search_normal} onPress={() => { setSearchVisible(true) }} />
-
+                <IconLayout text={language == 'en' ? "Ar" : 'en'} onPress={() => { dispatch(setLanguage(language == 'en' ? 'ar' : 'en')) }} />
             </View>
         </View>
     )
@@ -46,20 +51,21 @@ const Footer: React.FC<Props> = (props) => {
 const LandingPage: React.FC<Props> = (props) => {
     const [selectedDate, setselectedDate] = useState(moment())
     const [SearchVisible, setSearchVisible] = useState(false)
-
+    const [activefilter, setactivefilter] = useState(EventData[0].title)
+    const [selectedEventSport, setselectedEventSport] = useState([])
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: colors.Surface_light, }}>
+        <SafeAreaView style={[{ flex: 1, backgroundColor: colors.Surface_light, }]}>
             <View style={{ paddingHorizontal: SCREEN_WIDTH * .05, flex: 1, }}>
                 <Header setSearchVisible={setSearchVisible} />
                 <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
-                    <TopUpdates HeaderText={"Top Updates"} OfferData={'Get 50% off on indoor activites'} />
+                    <TopUpdates HeaderText={localizer("Top Updates")} OfferData={'Get 50% off on indoor activites'} />
                     <ImageCarousal images={[Stadium, Stadium, Stadium, Stadium,]} />
-                    <ServiceListing header='Services' data={ServiceList} />
+                    <ServiceListing header={localizer('Services')} data={ServiceList} />
                     <ScrollableServices />
-                    <TodaysActivities />
+                    <TodaysActivities activefilter={activefilter} setactivefilter={setactivefilter} selectedEventSport={selectedEventSport} setselectedEventSport={setselectedEventSport} />
                     <CalenderStrip selectedDate={selectedDate} setSelectedDate={setselectedDate} />
-                    <DisplayList />
+                    <DisplayList activeFilter={activefilter.toLowerCase()} selectedEventSport={selectedEventSport} />
                     <Footer />
                     <Search setSearchVisible={setSearchVisible} SearchVisible={SearchVisible} />
                 </ScrollView>

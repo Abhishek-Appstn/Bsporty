@@ -2,6 +2,7 @@ import { Image, ImageSourcePropType, Pressable, StyleSheet, Text, View } from 'r
 import React from 'react'
 import { SCREENDIMENSIONS } from '../constants/constants'
 import { colors } from '../constants/colors'
+import { localizer } from '../utils'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 type Props = {
     Title: string,
@@ -15,7 +16,7 @@ const ItemListingLayout: React.FC<Props> = ({ Title, image }) => {
                 <Image source={image} style={{ height: SCREEN_HEIGHT * .08, width: SCREEN_HEIGHT * .09 }} resizeMode='contain' />
             </View>
             <View style={{ flex: 1, marginTop: SCREEN_HEIGHT * .01 }} >
-                <Text style={{ fontSize: 11, fontWeight: '500', textAlign: 'center', maxWidth: SCREEN_WIDTH * .2, }}>{Title}</Text>
+                <Text style={{ fontSize: 11, fontWeight: '500', textAlign: 'center', maxWidth: SCREEN_WIDTH * .2, }}>{localizer(Title)}</Text>
             </View>
         </Pressable>
     )

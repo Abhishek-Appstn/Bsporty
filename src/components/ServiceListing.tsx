@@ -3,6 +3,7 @@ import React from 'react'
 import { SCREENDIMENSIONS, ServiceList } from '../constants/constants'
 import ItemListingLayout from './ItemListingLayout'
 import ServiceHeader from './ServiceHeader'
+import { flexDirection } from '../utils'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 
 type Props = {
@@ -23,9 +24,7 @@ const ServiceListing: React.FC<Props> = ({ header, data, rightIcon }) => {
     return (
         <View style={{ marginTop: SCREEN_HEIGHT * .02, width: SCREEN_WIDTH * .9 }} >
             <ServiceHeader header={header} rightIcon={rightIcon} />
-            <ScrollView bounces={false} showsHorizontalScrollIndicator={false} pagingEnabled={true} decelerationRate={'fast'} horizontal contentContainerStyle={{ flex: 1 }}>
-                <FlatList scrollEnabled={false} contentContainerStyle={{ marginTop: SCREEN_HEIGHT * .005 }} numColumns={4} data={data} renderItem={(item) => <ServiceListingRenderItem item={item.item} index={item.index} />} />
-            </ScrollView>
+            <FlatList scrollEnabled={false} contentContainerStyle={[{ marginTop: SCREEN_HEIGHT * .005, },]} numColumns={4} data={data} renderItem={(item) => <ServiceListingRenderItem item={item.item} index={item.index} />} />
         </View >
     )
 }

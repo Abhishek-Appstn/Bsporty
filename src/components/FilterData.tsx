@@ -6,6 +6,8 @@ import { EventData, SCREENDIMENSIONS } from '../constants/constants'
 import { colors } from '../constants/colors'
 import CustomPressable from './CustomPressable'
 import ActivityIcon from './ActivityIcon'
+import { flexDirection, localizer, textAlign } from '../utils'
+import { useSelector } from 'react-redux'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 
 type FlatlistProps = {
@@ -15,7 +17,7 @@ type FlatlistProps = {
 const FlatlistRenderItem: React.FC<FlatlistProps> = ({ title, selected, onPress }) => {
     return (
         <Pressable style={{ width: SCREEN_WIDTH * .28, height: SCREEN_HEIGHT * .05, alignItems: 'center', justifyContent: 'center', backgroundColor: selected ? colors.Primary_Green : colors.Grey_bg, paddingHorizontal: SCREEN_WIDTH * .02, paddingVertical: SCREEN_HEIGHT * .01, borderRadius: SCREEN_WIDTH * .03, marginHorizontal: SCREEN_WIDTH * .01 }} onPress={onPress}>
-            <Text style={{ color: selected ? colors.Text_White : colors.Text, fontWeight: '500', fontSize: 12 }}>{title}</Text>
+            <Text style={{ color: selected ? colors.Text_White : colors.Text, fontWeight: '500', fontSize: 12 }}>{localizer(title)}</Text>
         </Pressable>
     )
 }
@@ -27,10 +29,11 @@ type SportEventType = {
 }
 
 const SportEventType: React.FC<SportEventType> = ({ activefilter, setactivefilter }) => {
+    const language = useSelector(state => state?.language?.value)
     return (
         <View style={{ marginVertical: SCREEN_HEIGHT * .015 }}>
-            <Text style={{ fontWeight: '500', fontSize: 12, opacity: 0.4, }}>Type</Text>
-            <FlatList scrollEnabled={false} contentContainerStyle={{ justifyContent: 'space-between', flexGrow: 1, marginTop: SCREEN_HEIGHT * .015, }} horizontal data={EventData} style={{ flexDirection: 'row', }} renderItem={(item) => <FlatlistRenderItem title={item.item.title} selected={activefilter === item.item.title ? true : false} onPress={() => setactivefilter(item.item.title)} />} />
+            <Text style={[{ fontWeight: '500', fontSize: 12, opacity: 0.4, }, textAlign()]}>{localizer('Type')}</Text>
+            <FlatList inverted={language === 'ar' ? true : false} scrollEnabled={false} contentContainerStyle={{ justifyContent: 'space-between', flexGrow: 1, marginTop: SCREEN_HEIGHT * .015, }} horizontal data={EventData} style={{ flexDirection: 'row', }} renderItem={(item) => <FlatlistRenderItem title={item.item.title} selected={activefilter === item.item.title ? true : false} onPress={() => setactivefilter(item.item.title)} />} />
         </View>
 
     )
@@ -44,14 +47,13 @@ type SportFilter = {
 }
 
 const SportFilter: React.FC<SportFilter> = ({ activefilter, setactivefilter, data, selectedData, setSelectedData }) => {
-    console.log("Selected", selectedData);
 
     return (
         <View>
-            <Text style={{ fontWeight: '500', fontSize: 12, opacity: 0.4, }}>Sports</Text>
-            <FlatList ListEmptyComponent={<Text style={{ fontWeight: '500', fontSize: 12, color: colors.Text, opacity: 0.4, marginTop: SCREEN_HEIGHT * .01 }}>No sport Selection Available</Text>} scrollEnabled={false} columnWrapperStyle={{ marginVertical: SCREEN_HEIGHT * .01, }} showsVerticalScrollIndicator={false} numColumns={3} data={data} renderItem={(item) => < ActivityIcon title={item.item.title} icon={item.item.image} selected={selectedData.includes(item.item) ? true : false} onPress={() => setSelectedData((prevState) =>
+            <Text style={[{ fontWeight: '500', fontSize: 12, opacity: 0.4, }, textAlign()]}>{localizer('Sports')}</Text>
+            <FlatList ListEmptyComponent={<Text style={{ fontWeight: '500', fontSize: 12, color: colors.Text, opacity: 0.4, marginTop: SCREEN_HEIGHT * .01 }}>{localizer('No sport Selection Available')}</Text>} scrollEnabled={false} columnWrapperStyle={[{ marginVertical: SCREEN_HEIGHT * .01 }, flexDirection()]} showsVerticalScrollIndicator={false} numColumns={3} data={data} renderItem={(item) => < ActivityIcon title={item.item.title} icon={item.item.image} selected={selectedData.includes(item.item) ? true : false} onPress={() => setSelectedData((prevState) =>
                 prevState.includes(item.item) ? prevState.filter((selectedItem) => selectedItem !== item.item) : [...prevState, item.item]
-            )} maxwidth={SCREEN_WIDTH * .3} />} />
+            )} maxwidth={SCREEN_WIDTH * .35} />} />
         </View>
 
 
@@ -62,6 +64,7 @@ type Props = {
 }
 const FilterData: React.FC<Props> = ({ activefilter, setactivefilter, data, filterVisible, setFilterVisible, selectedData, setSelectedData }) => {
     const [Selectedlocal, setSelectedlocal] = useState(selectedData)
+
     useEffect(() => {
         setSelectedlocal(selectedData);
     }, [selectedData]);
@@ -71,7 +74,7 @@ const FilterData: React.FC<Props> = ({ activefilter, setactivefilter, data, filt
         <ModalOverlay modalVisible={filterVisible} setModalVisible={setFilterVisible}>
             <View style={{ justifyContent: 'space-between', flex: 1 }}>
                 <View style={{}}>
-                    <Text style={{ fontWeight: '600', fontSize: 16 }}>Filter By</Text>
+                    <Text style={[{ fontWeight: '600', fontSize: 16 }, textAlign()]}>{localizer('Filter_By')}</Text>
                     <SportEventType activefilter={activefilter} setactivefilter={setactivefilter} />
                     <SportFilter activefilter={activefilter} setactivefilter={setactivefilter} data={data} selectedData={Selectedlocal} setSelectedData={setSelectedlocal} />
                 </View>
