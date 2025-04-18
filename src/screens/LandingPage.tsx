@@ -16,6 +16,7 @@ import ModalOverlay from '../components/ModalOverlay'
 import { useDispatch, useSelector } from 'react-redux'
 import utils, { flexDirection, localizer } from '../utils'
 import { setLanguage } from '../Redux/Slices/languageSlice'
+import { Calendar } from 'react-native-calendars'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 type Props = {
 }

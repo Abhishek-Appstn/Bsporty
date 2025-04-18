@@ -12,7 +12,7 @@ export const ServiceList = [{ image: Academy, title: 'Academy' }, { image: Tourn
 export const BrandsList = [{ image: DynamicSports }, { image: SportsCorner }, { image: Decathlon }, { image: lululemon }, { image: AspireAcademy }, { image: AmericanAcademySchool }, { image: QatarHandballAssociation }, { image: GoSport }, { image: DynamicSports }, { image: SportsCorner }, { image: Decathlon }, { image: lululemon }, { image: AspireAcademy }, { image: AmericanAcademySchool }, { image: QatarHandballAssociation }, { image: GoSport }, { image: DynamicSports }, { image: SportsCorner }, { image: Decathlon }, { image: lululemon }, { image: AspireAcademy }, { image: AmericanAcademySchool }, { image: QatarHandballAssociation }, { image: GoSport }
 ]
 
-export const SportList = [{ image: Padel, title: 'Padel', type: 'Activity' }, { image: Volleyball, title: 'Volleyball', type: 'Activity' }, { image: Football, title: 'Football', type: 'Match' }, { image: Swimming, title: 'Swimming', type: 'Activity' }, { image: Tennis, title: 'Tennis', type: 'Match' }, { image: Badminton, title: 'Badminton', type: 'Tournament' }, { image: Golf, title: 'Golf', type: 'Activity' }, { image: Taekwondo, title: 'Taekwondo', type: 'Tournament' },
+export const SportList = [{ image: Padel, title: 'paddle', type: 'Activity' }, { image: Volleyball, title: 'Volleyball', type: 'Activity' }, { image: Football, title: 'Football', type: 'Match' }, { image: Swimming, title: 'Swimming', type: 'Activity' }, { image: Tennis, title: 'Tennis', type: 'Match' }, { image: Badminton, title: 'Badminton', type: 'Tournament' }, { image: Golf, title: 'Golf', type: 'Activity' }, { image: Taekwondo, title: 'Taekwondo', type: 'Tournament' },
 
 ]
 

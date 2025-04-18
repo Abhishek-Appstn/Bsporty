@@ -20,10 +20,6 @@ const DisplayList: React.FC<Props> = ({ activeFilter, selectedEventSport }) => {
     }, [activeFilter, selectedEventSport]);
 
 
-
-
-    console.log('aaaa', activeFilter);
-
     return (
         <FlatList scrollEnabled={false} columnWrapperStyle={{ justifyContent: 'space-between', marginVertical: 10 }} numColumns={2} data={FilteredData} renderItem={(item) => <ItemDisplayCard header={item.item.title} organiser={item.item.organiser} displayImage={item.item.image} eventType={item.item.eventType} outdoor={item.item.eventLocation?.toLowerCase() === 'outdoor'} time={item.item.time} />} />
     )

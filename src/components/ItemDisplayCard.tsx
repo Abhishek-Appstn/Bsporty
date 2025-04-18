@@ -27,15 +27,15 @@ type Detailprops = {
 
 
 }
-const Details: React.FC<Detailprops> = ({ Header, eventType, Organiser, time, timeAm }) => {
+export const Details: React.FC<Detailprops> = ({ Header, eventType, Organiser, time, timeAm }) => {
     return (
         <View style={{ flex: 1, paddingHorizontal: SCREEN_WIDTH * .015, justifyContent: 'space-evenly' }}>
             <Text style={[{ color: colors.Primary_Green, fontSize: 9, fontWeight: '400', opacity: 0.6, textTransform: 'capitalize' }, textAlign()]}>{localizer(eventType)}</Text>
             <Text style={[{ color: colors.Text, fontSize: 12, fontWeight: '500', textTransform: 'capitalize' }, textAlign()]}>{localizer(Header)}</Text>
-            <Text style={[{ color: colors.Text, fontSize: 12, fontWeight: '500', opacity: 0.4, textTransform: 'capitalize' }, textAlign()]}>{localizer(Organiser)}</Text>
-            <View style={[{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }, flexDirection()]}>
+            <Text style={[{ color: colors.Text, fontSize: 12, fontWeight: '500', opacity: 0.4, textTransform: 'capitalize', marginTop: SCREEN_HEIGHT * .005 }, textAlign()]}>{localizer(Organiser)}</Text>
+            <View style={[{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', flex: 1 }, flexDirection()]}>
                 <View style={[{ backgroundColor: colors.Grey_bg, height: SCREEN_HEIGHT * .02, minWidth: SCREEN_WIDTH * .1, borderRadius: SCREEN_HEIGHT, alignItems: 'center', justifyContent: 'center', paddingHorizontal: SCREEN_WIDTH * .007, paddingVertical: SCREEN_HEIGHT * .002 },]} >
-                    <Text style={[{ fontSize: 8.8 }]}>{time} {localizer(timeAm)}</Text>
+                    <Text style={[{ fontSize: 8.8 }]}>{localizer(moment(time, "hh:mm A").format("hh:mm"))} {localizer(moment(time, "hh:mm A").format("a"))}</Text>
 
                 </View>
                 <View style={[{ paddingRight: SCREEN_WIDTH * .02 }, ImageTransform()]}>
@@ -74,7 +74,7 @@ const ItemDisplayCard: React.FC<Props> = ({ displayImage, time, header, eventTyp
                 overflow: 'hidden',
             }}>
                 <ImageHeader image={displayImage} />
-                <Details Header={header} eventType={eventType} Organiser={organiser} time={moment(time, "hh:mm A").format("hh:mm")} timeAm={moment(time, "hh:mm A").format("a")} />
+                <Details Header={header} eventType={eventType} Organiser={organiser} time={time} timeAm={time} />
 
             </Pressable>
         </View >

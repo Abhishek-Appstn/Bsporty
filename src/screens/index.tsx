@@ -1,4 +1,6 @@
 import LandingPage from "./LandingPage"
-export{
-LandingPage
+import SearchResult from "./SearchResult"
+export {
+    LandingPage,
+    SearchResult
 }

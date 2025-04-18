@@ -1,9 +1,11 @@
 import { Image, ImageSourcePropType, Pressable, Text, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { SCREENDIMENSIONS } from '../constants/constants'
 import { colors } from '../constants/colors'
 import { calendar, timer } from '../assets/images'
 import moment from 'moment'
+import { Calendar } from 'react-native-calendars'
+import { localizer } from '../utils'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 type SelectionItemProps = {
     title: string, icon: ImageSourcePropType
@@ -14,7 +16,7 @@ const SelectionItem: React.FC<SelectionItemProps> = ({ title, icon }) => {
             flex: 1, alignItems: 'center', flexDirection: 'row',
         }}>
             <Image source={icon} style={{ height: SCREEN_HEIGHT * .02, marginHorizontal: SCREEN_WIDTH * .01 }} resizeMode='contain' />
-            <Text style={{ fontWeight: '400', fontSize: 14, color: colors.Text, }}>{title}</Text>
+            <Text style={{ fontWeight: '400', fontSize: 14, color: colors.Text, }}>{localizer(title)}</Text>
         </Pressable>
     )
 }
@@ -27,6 +29,7 @@ type Props = {
 }
 
 const EventScheduler: React.FC<Props> = ({ selectedDate, selectedTime }) => {
+    const [isCalenderVisible, setisCalenderVisible] = useState(false)
     return (
         <View style={{ height: SCREEN_HEIGHT * .05, alignItems: 'center', justifyContent: 'center', borderColor: colors.border, borderWidth: 1, borderRadius: SCREEN_WIDTH * .015, overflow: 'hidden', marginTop: SCREEN_HEIGHT * .025 }}>
             <View style={{ width: SCREEN_WIDTH * .6, flexDirection: 'row', justifyContent: 'space-between', }}>
@@ -35,7 +38,6 @@ const EventScheduler: React.FC<Props> = ({ selectedDate, selectedTime }) => {
                 <Text style={{ alignSelf: 'center', fontSize: 20, opacity: 0.5 }}>|</Text>
                 <SelectionItem title={selectedTime?.format("HH:mm A")} icon={timer} />
             </View>
-
         </View>
     )
 }

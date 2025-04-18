@@ -53,5 +53,5 @@ export const ImageTransform = (): Record<string, any> => {
 
 export const localizer = (key: string): string => {
     const language = useCurrentLanguage();
-    return translations[language]?.[key.toLowerCase()] || key;
+    return translations[language]?.[key?.toLowerCase()] || key;
 };
