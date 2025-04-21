@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, StatusBar } from 'react-native'
 import React, { useState } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { LandingPage, SearchResult } from '../screens'
@@ -7,6 +7,8 @@ import CustomBottomTab from '../components/CustomBottomTab'
 import { NavigationContainer } from '@react-navigation/native'
 import TodaysActivity from '../screens/TodaysActivity'
 import ActivityClasses from '../screens/ActivityClasses'
+import { colors } from '../constants/colors'
+import ClubDetails from '../screens/ClubDetails'
 
 type Props = {}
 const Stack = createNativeStackNavigator()
@@ -22,11 +24,13 @@ const BottomTabs = (props: Props) => {
 }
 const AuthStack = (props: Props) => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator screenOptions={{ headerShown: false,animation:'fade' }}>
       <Stack.Screen name='Home' component={BottomTabs} />
       <Stack.Screen name='SearchResults' component={SearchResult} />
       <Stack.Screen name='TodaysActivities' component={TodaysActivity} />
       <Stack.Screen name='ActivityClasses' component={ActivityClasses} />
+      <Stack.Screen name='ClubDetails' component={ClubDetails} />
+
 
 
 
@@ -37,9 +41,13 @@ const AuthStack = (props: Props) => {
 
 const Routes = (props: Props) => {
   return (
+    <>
+<StatusBar backgroundColor={colors.Surface_light} barStyle={'dark-content'}/>
     <NavigationContainer>
       <AuthStack />
     </NavigationContainer>
+    </>
+
 
 
   )

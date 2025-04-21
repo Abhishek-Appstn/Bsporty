@@ -8,14 +8,17 @@ import ServiceHeader from './ServiceHeader'
 import { colors } from '../constants/colors'
 import { localizer } from '../utils'
 import { useSelector } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 type ItemDisplayProps = {
     image: ImageSourcePropType
 }
 
 const ItemDisplay: React.FC<ItemDisplayProps> = ({ image }) => {
+    const navigation=useNavigation()
     return (
-        <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: SCREEN_HEIGHT * .01, }}>
+        <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'center', margin: SCREEN_HEIGHT * .01, }} onPress={()=>navigation?.navigate("ClubDetails")
+        }>
             <View style={{ backgroundColor: colors.Grey_bg, borderRadius: SCREEN_WIDTH * .02, height: SCREEN_HEIGHT * .062, width: SCREEN_HEIGHT * .082, justifyContent: 'center', alignItems: 'center' }}>
                 <Image source={image} style={{ height: SCREEN_HEIGHT * .075, width: SCREEN_HEIGHT * .085 }} resizeMode='contain' />
             </View>

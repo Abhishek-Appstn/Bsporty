@@ -25,15 +25,16 @@ const FlatlistRenderItem: React.FC<FlatlistProps> = ({ title, selected, onPress 
 
 type SportEventType = {
     activefilter: string
-    setactivefilter: (name: string) => void
+    setactivefilter: (name: string) => void,
+    Data?:any
 }
 
-const SportEventType: React.FC<SportEventType> = ({ activefilter, setactivefilter }) => {
+export const SportEventType: React.FC<SportEventType> = ({ activefilter, setactivefilter,Data }) => {
     const language = useSelector(state => state?.language?.value)
     return (
         <View style={{ marginVertical: SCREEN_HEIGHT * .015 }}>
             <Text style={[{ fontWeight: '500', fontSize: 12, opacity: 0.4, }, textAlign()]}>{localizer('Type')}</Text>
-            <FlatList inverted={language === 'ar' ? true : false} scrollEnabled={false} contentContainerStyle={{ justifyContent: 'space-between', flexGrow: 1, marginTop: SCREEN_HEIGHT * .015, }} horizontal data={EventData} style={{ flexDirection: 'row', }} renderItem={(item) => <FlatlistRenderItem title={item.item.title} selected={activefilter === item.item.title ? true : false} onPress={() => setactivefilter(item.item.title)} />} />
+            <FlatList inverted={language === 'ar' ? true : false} scrollEnabled={false} contentContainerStyle={{ justifyContent: 'space-between', flexGrow: 1, marginTop: SCREEN_HEIGHT * .015, }} horizontal data={Data || EventData} style={{ flexDirection: 'row', }} renderItem={(item) => <FlatlistRenderItem title={item.item} selected={activefilter.toLocaleLowerCase() === item?.item?.toLocaleLowerCase() ? true : false} onPress={() => setactivefilter(item.item)} />} />
         </View>
 
     )
