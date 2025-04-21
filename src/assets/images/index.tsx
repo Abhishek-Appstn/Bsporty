@@ -50,6 +50,18 @@ import dummyVolleyball from './dummyVolleyball/dummyVolleyball.png'
 import dummyFootball from './dummyFootball/dummyFootball.png'
 import ArrowLeft from './ArrowLeft/ArrowLeft.png'
 import cross from './cross/cross.png'
+import search_black from './search_black/search_black.png'
+import Club1 from './Club1/Club1.png'
+import Club2 from './Club2/Club2.png'
+import Club3 from './Club3/Club3.png'
+import Club4 from './Club4/Club4.png'
+import Club5 from './Club5/Club5.png'
+import crossCircle from './crossCircle/crossCircle.png'
+import trophyGreen from './trophyGreen/trophyGreen.png'
+
+
+
+
 
 
 
@@ -61,5 +73,5 @@ import cross from './cross/cross.png'
 
 export {
     App_logo, wallet, search_normal, DiscountIcon, Stadium, Sports, Membership, Classes, Shops, HealthyFood, PersonalCoaches, Tournaments, Academy,
-    DynamicSports, SportsCorner, Decathlon, lululemon, AspireAcademy, AmericanAcademySchool, QatarHandballAssociation, GoSport, ArrowRight, Taekwondo, Golf, Badminton, Tennis, Football, Padel, Swimming, Volleyball, Filter, FooterImage, roundBack, chevronDown, calendar, timer, cartImage, chatIcon, homeIcon, notifyIcon, notifyIconFilled, homeIconOutlined, cartImageFilled, chatIconFilled, dummyFootball, dummyTennis, dummyVolleyball, ArrowLeft, cross
+    DynamicSports, SportsCorner, Decathlon, lululemon, AspireAcademy, AmericanAcademySchool, QatarHandballAssociation, GoSport, ArrowRight, Taekwondo, Golf, Badminton, Tennis, Football, Padel, Swimming, Volleyball, Filter, FooterImage, roundBack, chevronDown, calendar, timer, cartImage, chatIcon, homeIcon, notifyIcon, notifyIconFilled, homeIconOutlined, cartImageFilled, chatIconFilled, dummyFootball, dummyTennis, dummyVolleyball, ArrowLeft, cross, search_black, Club1, Club2, Club3, Club4, Club5, trophyGreen, crossCircle
 }

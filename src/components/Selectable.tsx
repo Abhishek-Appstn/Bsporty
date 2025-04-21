@@ -9,7 +9,7 @@ type Props = {
     selectedService: string, setSelectedService: () => void
 }
 type ItemProps = {
-    title: string, index: Number, onPress: Function, isSelected: boolean
+    title: string, index: Number, onPress: () => void, isSelected: boolean
 }
 
 const ListRenderItem: React.FC<ItemProps> = ({ title, index, onPress, isSelected }) => {

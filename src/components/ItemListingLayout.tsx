@@ -3,6 +3,7 @@ import React from 'react'
 import { SCREENDIMENSIONS } from '../constants/constants'
 import { colors } from '../constants/colors'
 import { localizer } from '../utils'
+import { useNavigation } from '@react-navigation/native'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 type Props = {
     Title: string,
@@ -10,8 +11,9 @@ type Props = {
 }
 
 const ItemListingLayout: React.FC<Props> = ({ Title, image }) => {
+    const navigation = useNavigation()
     return (
-        <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end', marginVertical: SCREEN_HEIGHT * .01 }}>
+        <Pressable style={{ flex: 1, alignItems: 'center', justifyContent: 'flex-end', marginVertical: SCREEN_HEIGHT * .01 }} onPress={() => { navigation?.navigate('ActivityClasses') }}>
             <View style={{ backgroundColor: colors.Grey_bg, borderRadius: 10, height: SCREEN_HEIGHT * .064, width: SCREEN_HEIGHT * .08, justifyContent: 'flex-end', alignItems: 'center' }}>
                 <Image source={image} style={{ height: SCREEN_HEIGHT * .08, width: SCREEN_HEIGHT * .09 }} resizeMode='contain' />
             </View>

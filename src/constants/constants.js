@@ -1,5 +1,5 @@
 import { Dimensions } from "react-native";
-import { Academy, AmericanAcademySchool, AspireAcademy, Badminton, cartImage, cartImageFilled, chatIcon, chatIconFilled, Classes, Decathlon, dummyTennis, dummyVolleyball, DynamicSports, Football, Golf, GoSport, HealthyFood, homeIcon, homeIconOutlined, lululemon, Membership, notifyIcon, notifyIconFilled, Padel, PersonalCoaches, QatarHandballAssociation, Shops, Sports, SportsCorner, Swimming, Taekwondo, Tennis, Tournaments, Volleyball } from "../assets/images";
+import { Academy, AmericanAcademySchool, AspireAcademy, Badminton, cartImage, cartImageFilled, chatIcon, chatIconFilled, Classes, Club1, Club2, Club3, Club4, Club5, Decathlon, dummyTennis, dummyVolleyball, DynamicSports, Football, Golf, GoSport, HealthyFood, homeIcon, homeIconOutlined, lululemon, Membership, notifyIcon, notifyIconFilled, Padel, PersonalCoaches, QatarHandballAssociation, Shops, Sports, SportsCorner, Swimming, Taekwondo, Tennis, Tournaments, Volleyball } from "../assets/images";
 const { height, width } = Dimensions.get('screen')
 
 export const SCREENDIMENSIONS = {
@@ -43,4 +43,14 @@ export const BottomTabData = [
 
 ]
 
+export const Clubs = [{ clubImage: Club2, clubName: 'Al-Ahli Sports Club', clubLocation: "Al sadd, Al Nazr", clubDistance: 3 },
+{ clubImage: Club1, clubName: 'El-Jaish Sports Club', clubLocation: "Al sadd, Al Nazr", clubDistance: 3 },
+{ clubImage: Club3, clubName: 'Al-Duhail Soccer Club', clubLocation: "Al sadd, Al Nazr", clubDistance: 3 },
+{ clubImage: Club4, clubName: 'Al-Wakrah Sports Club', clubLocation: "Al sadd, Al Nazr", clubDistance: 3 },
+{ clubImage: Club5, clubName: 'Al-Sadd SC', clubLocation: "Al sadd, Al Nazr" },
+]
 
+export const MatchFilterData = [
+    { title: 'Private Friendly Match' },
+    { title: 'Public Friendly Match' }
+]

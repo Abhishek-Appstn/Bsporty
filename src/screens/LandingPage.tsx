@@ -1,4 +1,4 @@
-import React, { Ref, RefObject, useRef, useState } from 'react'
+import React, { Ref, RefObject, useEffect, useRef, useState } from 'react'
 import { Image, ImageBackground, SafeAreaView, ScrollView, StatusBar, Text, View } from 'react-native'
 import { colors } from '../constants/colors'
 import { BrandsList, EventData, SCREENDIMENSIONS, ServiceList } from '../constants/constants'
@@ -17,6 +17,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import utils, { flexDirection, localizer } from '../utils'
 import { setLanguage } from '../Redux/Slices/languageSlice'
 import { Calendar } from 'react-native-calendars'
+import TournamentInvite from '../components/TournamentInvite'
+import MatchFilter from '../components/MatchFilter'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 type Props = {
 }
@@ -54,9 +56,18 @@ const LandingPage: React.FC<Props> = (props) => {
     const [SearchVisible, setSearchVisible] = useState(false)
     const [activefilter, setactivefilter] = useState(EventData[0].title)
     const [selectedEventSport, setselectedEventSport] = useState([])
+    const [inviteState, setInviteState] = useState(false)
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setInviteState(true)
+    //     }, 3000);
+    // }, [])
+
 
     return (
         <SafeAreaView style={[{ flex: 1, backgroundColor: colors.Surface_light, }]}>
+            <Search setSearchVisible={setSearchVisible} SearchVisible={SearchVisible} />
+
             <View style={{ paddingHorizontal: SCREEN_WIDTH * .05, flex: 1, }}>
                 <Header setSearchVisible={setSearchVisible} />
                 <ScrollView bounces={false} showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
@@ -68,7 +79,9 @@ const LandingPage: React.FC<Props> = (props) => {
                     <CalenderStrip selectedDate={selectedDate} setSelectedDate={setselectedDate} />
                     <DisplayList activeFilter={activefilter.toLowerCase()} selectedEventSport={selectedEventSport} />
                     <Footer />
-                    <Search setSearchVisible={setSearchVisible} SearchVisible={SearchVisible} />
+                    <TournamentInvite visible={inviteState} setVisible={setInviteState} />
+
+                    <MatchFilter />
                 </ScrollView>
             </View>
 

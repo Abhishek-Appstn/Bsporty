@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux'
 import Svg, { Path } from 'react-native-svg'
 const { SCREEN_HEIGHT, SCREEN_WIDTH } = SCREENDIMENSIONS
 
-type IconProps = { icon: ImageSourcePropType,isSelected:boolean }
+type IconProps = { icon: ImageSourcePropType, isSelected: boolean }
 
 const ConnectionSvg = () => {
     return (
@@ -34,7 +34,7 @@ const IconRenderItem: React.FC<IconProps & { isSelected: boolean }> = ({ icon, i
     return (
         isSelected ? (
             <LinearGradient
-                colors={[colors.Primary_Green, colors.Primary_Green, colors.CarousalGray, colors.button]}
+                colors={[colors.Primary_Green, colors.Primary_Green, colors.CarousalGray, colors.CarousalGray]}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={{
@@ -92,15 +92,15 @@ type Props = {
 
 const CustomBottomTab: React.FC<Props> = ({ }) => {
     const route = useRoute()
-    console.log("route",route);
-    
+    console.log("route", route);
+
     const language = useSelector(state => state?.language?.value)
     return (
         <SafeAreaView style={{ width: SCREEN_WIDTH * .8, height: SCREEN_HEIGHT * .06, borderRadius: SCREEN_WIDTH * .05, position: 'absolute', bottom: 0, marginBottom: SCREEN_HEIGHT * .05, alignSelf: 'center', overflow: 'hidden', flexDirection: 'row', alignItems: 'center', }}>
             <View style={[{ flex: 1, flexDirection: 'row', alignItems: 'center' }, flexDirection()]}>
 
                 <View style={{ flex: 6, backgroundColor: colors.button, justifyContent: 'center', padding: SCREEN_WIDTH * .01, borderRadius: 20, }}>
-                    <FlatList inverted={language == 'ar' ? true : false} scrollEnabled={false} data={BottomTabData} contentContainerStyle={{ justifyContent: 'space-between', flexGrow: 3, alignItems: 'center' }} horizontal renderItem={(item) => <IconRenderItem icon={(item?.item?.name).toLowerCase() === (route?.name).toLowerCase() ? item.item.icon_filled : item.item.icon_outline} isSelected={(item?.item?.name).toLowerCase() === (route?.name).toLowerCase()?true:false} />} />
+                    <FlatList inverted={language == 'ar' ? true : false} scrollEnabled={false} data={BottomTabData} contentContainerStyle={{ justifyContent: 'space-between', flexGrow: 3, alignItems: 'center' }} horizontal renderItem={(item) => <IconRenderItem icon={(item?.item?.name).toLowerCase() === (route?.name).toLowerCase() ? item.item.icon_filled : item.item.icon_outline} isSelected={(item?.item?.name).toLowerCase() === (route?.name).toLowerCase() ? true : false} />} />
                 </View >
                 <Pressable style={{
                     backgroundColor: colors.button, borderRadius: SCREEN_WIDTH, height: SCREEN_HEIGHT * .06, width: SCREEN_HEIGHT * .06, overflow: 'hidden', alignItems: 'center', justifyContent: 'center',

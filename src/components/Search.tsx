@@ -38,9 +38,11 @@ const Search: React.FC<Props> = ({ setSearchVisible, SearchVisible }) => {
     const [selectedService, setselectedService] = useState('Select a service')
     const [selectedDate, setselectedDate] = useState(moment)
     const [selectedTime, setselectedTime] = useState(moment)
+    console.log("Visi", SearchVisible, setSearchVisible);
+
     return (
 
-        <ModalOverlay height={SCREEN_HEIGHT * .4} modalVisible={SearchVisible} setModalVisible={setSearchVisible}>
+        <ModalOverlay modalVisible={SearchVisible} setModalVisible={setSearchVisible}>
             <View style={{ justifyContent: 'space-between', flex: 1 }}>
                 <View style={{ paddingHorizontal: SCREEN_WIDTH * .03, }}>
                     <Text style={{ fontWeight: '600', fontSize: 16 }}>{localizer('Search')}</Text>
