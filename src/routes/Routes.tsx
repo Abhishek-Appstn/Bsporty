@@ -21,7 +21,7 @@ const BottomTabs = (props: Props) => {
 const AuthStack = (props: Props) => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name='BottomTabs' component={BottomTabs} />
+      <Stack.Screen name='Home' component={BottomTabs} />
       <Stack.Screen name='SearchResults' component={SearchResult} />
 
 
