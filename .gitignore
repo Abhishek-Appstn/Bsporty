@@ -2,6 +2,10 @@
 #
 .DS_Store
 package-lock.json
+# Lock Files
+*.lock
+yarn.lock
+
 # Xcode
 #
 build/
