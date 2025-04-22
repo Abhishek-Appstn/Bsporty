@@ -16,7 +16,6 @@ type Props = {
     clubDistance: any
 }
 const ClubRenderItem: React.FC<Props> = ({ clubImage, clubName, clubLocation, clubDistance }) => {
-    console.log('Home', clubImage, clubName, clubLocation, clubDistance)
     return (
         <Pressable style={{ backgroundColor: colors.Surface_light, borderColor: colors.border, borderWidth: 0.4, height: SCREEN_HEIGHT * .12, borderRadius: 20, marginVertical: SCREEN_HEIGHT * .01, overflow: 'hidden', flexDirection: 'row', alignItems: 'center', paddingHorizontal: SCREEN_WIDTH * .02, elevation: 4, shadowColor: colors.button, shadowRadius: 5, shadowOpacity: .7, shadowOffset: { height: 0, width: 10 }, }}>
             <Image source={clubImage} style={{ height: SCREEN_HEIGHT * .09, width: SCREEN_HEIGHT * .09, borderRadius: SCREEN_WIDTH * .015, overflow: 'hidden' }} resizeMode='cover' />
